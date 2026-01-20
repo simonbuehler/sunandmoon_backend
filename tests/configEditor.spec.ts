@@ -18,8 +18,8 @@ test('"Save & test" should be successful when latitude and longitude are valid',
 });
 
 
-// Test to verify that 'Save & Test' fails if latitude or longitude is not provided
-test('"Save & test" should fail when latitude or longitude is missing', async ({
+// Test to verify that 'Save & Test' fails if latitude is out of range
+test('"Save & test" should fail when latitude is out of range', async ({
   createDataSourceConfigPage,
   readProvisionedDataSource,
   page,
@@ -27,17 +27,17 @@ test('"Save & test" should fail when latitude or longitude is missing', async ({
   const ds = await readProvisionedDataSource<SunAndMoonDataSourceOptions>({ fileName: 'datasources.yml' });
   const configPage = await createDataSourceConfigPage({ type: ds.type });
 
-  // Leave latitude empty and set a valid longitude
-  await page.getByLabel('Latitude').fill('');
+  // Set latitude out of valid range (-90 to 90)
+  await page.getByLabel('Latitude').fill('100');
   await page.getByLabel('Longitude').fill('9.9910');
   
-  // Save and test should fail due to missing latitude
+  // Save and test should fail due to invalid latitude
   await expect(configPage.saveAndTest()).not.toBeOK();
 });
 
 
-// Test to verify that entering non-numeric values into latitude and longitude fields results in an error
-test('"Save & test" should fail with non-numeric latitude and longitude', async ({
+// Test to verify that 'Save & Test' fails if longitude is out of range
+test('"Save & test" should fail when longitude is out of range', async ({
   createDataSourceConfigPage,
   readProvisionedDataSource,
   page,
@@ -45,10 +45,10 @@ test('"Save & test" should fail with non-numeric latitude and longitude', async 
   const ds = await readProvisionedDataSource<SunAndMoonDataSourceOptions>({ fileName: 'datasources.yml' });
   const configPage = await createDataSourceConfigPage({ type: ds.type });
 
-  // Enter non-numeric values
-  await page.getByLabel('Latitude').fill('latitude');
-  await page.getByLabel('Longitude').fill('longitude');
+  // Set longitude out of valid range (-180 to 180)
+  await page.getByLabel('Latitude').fill('48.3984');
+  await page.getByLabel('Longitude').fill('200');
   
-  // Save and test should fail because the values are non-numeric
+  // Save and test should fail due to invalid longitude
   await expect(configPage.saveAndTest()).not.toBeOK();
 });
