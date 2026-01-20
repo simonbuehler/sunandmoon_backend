@@ -69,7 +69,7 @@ export class ConfigEditor extends PureComponent<Props> {
               aria-label="Latitude"
               onChange={this.onLatitudeChange}
               value={jsonData.latitude}
-              placeholder="48.3984"
+              placeholder="47.736389"
               type="number"
               min={-90}
               max={90}
@@ -85,7 +85,7 @@ export class ConfigEditor extends PureComponent<Props> {
               aria-label="Longitude"
               onChange={this.onLongitudeChange}
               value={jsonData.longitude}
-              placeholder="9.9910"
+              placeholder="8.969160"
               type="number"
               min={-360}
               max={360}

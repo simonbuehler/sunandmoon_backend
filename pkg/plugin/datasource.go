@@ -158,10 +158,13 @@ func (d *Datasource) QueryData(ctx context.Context, req *backend.QueryDataReques
 			for _, annotation := range annotations {
 				frame := data.NewFrame(models.SunAndMoonAnnotations[annotation].Title,
 					data.NewField("Time", nil, []time.Time{}),
-					data.NewField("Title", nil, []string{}),
-					data.NewField("Text", nil, []string{}),
-					data.NewField("Tag", nil, []string{}),
+					data.NewField("Value", nil, []float64{}),
 				)
+				
+				// Mark frame as time series for visualization
+				frame.Meta = &data.FrameMeta{
+					PreferredVisualization: "graph",
+				}
 
 				// Iterate over each day in the time range
 				for t := query.TimeRange.From; t.Before(query.TimeRange.To); t = t.AddDate(0, 0, 1) {
@@ -212,8 +215,8 @@ func (d *Datasource) QueryData(ctx context.Context, req *backend.QueryDataReques
 
 					// Check if eventTime is valid (not zero)
 					if !eventTime.IsZero() {
-						def := models.SunAndMoonAnnotations[annotation]
-						frame.AppendRow(eventTime, def.Title, def.Text, def.Tag)
+						// Return a fixed value (e.g., 1.0) so it can be displayed as a marker
+						frame.AppendRow(eventTime, 1.0)
 					}
 				}
 

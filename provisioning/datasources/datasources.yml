@@ -1,7 +1,8 @@
 apiVersion: 1
 
 datasources:
-  - name: 'sunandmoon_backend'
+  - name: 'Sun and Moon'
+    uid: 'sunmoon_datasource'
     type: 'simonbuehler-sunandmoon-datasource'
     access: proxy
     isDefault: false
@@ -9,4 +10,5 @@ datasources:
     version: 1
     editable: true
     jsonData:
-      path: '/resources'
+      latitude: 48.1351
+      longitude: 11.5820

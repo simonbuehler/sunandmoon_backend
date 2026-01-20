@@ -1,34 +1,41 @@
 import { DataSourceJsonData } from '@grafana/data';
 import { DataQuery } from '@grafana/schema';
 
-// Typ für die Abfragen, die an das Backend gesendet werden
+// Query type sent to the backend
 export interface SunAndMoonQuery extends DataQuery {
-  target?: string[]; // Array von Metriken, die abgefragt werden
-  latitude?: string; // Optional: Breitenangabe als String (für Eingaben im Editor)
-  longitude?: string; // Optional: Längenangabe als String (für Eingaben im Editor)
+  target?: string[]; // Array of metrics to query
+  latitude?: string; // Optional: Latitude as string (for editor input)
+  longitude?: string; // Optional: Longitude as string (for editor input)
 }
 
-// Standardwerte für Abfragen (Metriken und ggf. Default-Latitude/Longitude)
+// Annotation query type
+export interface SunAndMoonAnnotationQuery {
+  target?: string[]; // Array of annotation events to query
+  latitude?: string; // Optional: Latitude as string (for editor input)
+  longitude?: string; // Optional: Longitude as string (for editor input)
+}
+
+// Default values for queries (metrics and optional default latitude/longitude)
 export const DEFAULT_QUERY: Partial<SunAndMoonQuery> = {
-  target: ['moon_illumination'], // Standard-Metrik für die Abfrage
+  target: ['moon_illumination'], // Default metric for query
 };
 
-// Typ für einen einzelnen Datenpunkt (Zeit und Wert)
+// Type for a single data point (time and value)
 export interface DataPoint {
-  time: number; // Zeitstempel als Zahl (Unix-Zeit)
-  value: number; // Wert des Datenpunkts
+  time: number; // Timestamp as number (Unix time)
+  value: number; // Value of the data point
 }
 
-// Antwortstruktur, die vom Backend zurückgegeben wird
+// Response structure returned by the backend
 export interface DataSourceResponse {
-  datapoints: DataPoint[]; // Array von Datenpunkten
+  datapoints: DataPoint[]; // Array of data points
 }
 
 /**
- * Optionen, die für jede Datenquelleninstanz konfiguriert werden.
- * Diese Optionen können in Grafana für jede Datenquelle individuell eingestellt werden.
+ * Options configured for each datasource instance.
+ * These options can be set individually for each datasource in Grafana.
  */
 export interface SunAndMoonDataSourceOptions extends DataSourceJsonData {
-  latitude?: number; // Optional: Breitenangabe (Wird als Zahl gespeichert)
-  longitude?: number; // Optional: Längenangabe (Wird als Zahl gespeichert)
+  latitude?: number; // Optional: Latitude (stored as number)
+  longitude?: number; // Optional: Longitude (stored as number)
 }

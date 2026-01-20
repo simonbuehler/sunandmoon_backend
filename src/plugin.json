@@ -4,7 +4,7 @@
   "name": "Sun and Moon Datasource Backend",
   "id": "simonbuehler-sunandmoon-datasource",
   "metrics": true,
-  "annotations": true,
+  "annotations": false,
   "alerting": false,
   "backend": true,
   "executable": "gpx_sunandmoon",
@@ -25,7 +25,7 @@
     "updated": "%TODAY%"
   },
   "dependencies": {
-    "grafanaDependency": ">=10.4.0",
+    "grafanaDependency": ">=11.0.0",
     "plugins": []
   }
 }

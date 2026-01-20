@@ -22,13 +22,19 @@ export function QueryEditor({ query, onChange, onRunQuery }: Props) {
   };
 
   const onLatitudeChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onChange({ ...query, latitude: event.target.value });
-    onRunQuery();
+    const value = parseFloat(event.target.value);
+    if (!isNaN(value) && value >= -90 && value <= 90) {
+      onChange({ ...query, latitude: value.toString() });
+      onRunQuery();
+    }
   };
-
+  
   const onLongitudeChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onChange({ ...query, longitude: event.target.value });
-    onRunQuery();
+    const value = parseFloat(event.target.value);
+    if (!isNaN(value) && value >= -180 && value <= 180) {
+      onChange({ ...query, longitude: value.toString() });
+      onRunQuery();
+    }
   };
 
   const { target, latitude, longitude } = query;
