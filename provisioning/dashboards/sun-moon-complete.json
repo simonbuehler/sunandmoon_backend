@@ -643,7 +643,18 @@
             "uid": "sunmoon_datasource"
           },
           "refId": "A",
-          "target": ["sunrise", "sunset", "dawn", "dusk", "nauticalDawn", "nauticalDusk", "solarNoon", "nadir", "moonrise", "moonset"]
+          "target": [
+            "sunrise",
+            "sunset",
+            "dawn",
+            "dusk",
+            "nauticalDawn",
+            "nauticalDusk",
+            "solarNoon",
+            "nadir",
+            "moonrise",
+            "moonset"
+          ]
         }
       ],
       "title": "Sun & Moon Events (Today & Tomorrow)",

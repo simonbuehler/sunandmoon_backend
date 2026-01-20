@@ -160,7 +160,7 @@ func (d *Datasource) QueryData(ctx context.Context, req *backend.QueryDataReques
 					data.NewField("Time", nil, []time.Time{}),
 					data.NewField("Value", nil, []float64{}),
 				)
-				
+
 				// Mark frame as time series for visualization
 				frame.Meta = &data.FrameMeta{
 					PreferredVisualization: "graph",
