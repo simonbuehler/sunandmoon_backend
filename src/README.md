@@ -20,8 +20,6 @@ This backend version was developed to address the limitations of frontend-only p
 - **Moon Events**: Moonrise, moonset, moon illumination, and more.
 - **Backend Processing**: Moves the calculations to the backend, ensuring compatibility with public Grafana dashboards.
 
-
-
 ![Sun and Moon Screenshot](https://raw.githubusercontent.com/fetzerch/grafana-sunandmoon-datasource/master/src/img/screenshot.png)
 
 ## Requirements
@@ -35,14 +33,16 @@ This backend version was developed to address the limitations of frontend-only p
 3. Use the query editor to select metrics or annotations for visualization.
 
 ### Example Metrics:
+
 - `moon_illumination`: Percentage of the moon illuminated.
 - `sun_altitude`: Sun's height in degrees.
 - `moon_distance`: Distance to the moon.
 
 ### Example Annotations:
+
 - `sunrise`: When the top edge of the sun appears on the horizon.
 - `moonrise`: When the moon appears on the horizon.
 
 ## Licensing
 
-This plugin is licensed under the [MIT License](https://github.com/simonbuehler/sunandmoon-backend/blob/main/LICENSE).
+This plugin is licensed under the [Apache-2.0 License](https://github.com/simonbuehler/sunandmoon_backend/blob/main/LICENSE).
